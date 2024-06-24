@@ -10,10 +10,11 @@ describe('Order Acceptance', () => {
       const requiredItem = find.byText('Recent Orders');
       // const newOrder = find.byValueKey('newOrder_key');
       // const orderList = find.byType('ListView');
-      
+    
 
       // const orderTile = find.descendant()
-      // const prepTime = find.byValueKey('prep_time_key');
+      const prepTime = find.byValueKey('prepTime_key');
+      const accept = find.byValueKey('accept_order');
 
 
 
@@ -32,7 +33,9 @@ describe('Order Acceptance', () => {
       // await driver.elementClick(recentOrders);
       await driver.elementClick(requiredItem);
       await driver.pause(5000) // wait for 20 seconds
-
+      await driver.execute('flutter:waitFor', prepTime);
+      await driver.elementSendKeys(email, '10');
+      await driver.elementClick(accept);
 
 
 
